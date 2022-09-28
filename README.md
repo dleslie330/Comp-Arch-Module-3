@@ -2,13 +2,4 @@
 Code project for Computer Architecture Module 3
 
 TO-DO:
-    Fix Linked Lists
-        Fix Node Class
-    
-    Create Arrays
-    
-    Create Stacks
-
-    Create Queues
-
-    Use all Structures
+    Check that I've met all the project requirements
