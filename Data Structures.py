@@ -10,6 +10,7 @@ def driver():
     n3 = Node("Zach")
     n4 = Node("Ethan")
     n5 = Node("Levi")
+    n6 = Node("Archer")
 
     print("LinkedList")
     llTest = LinkedList()
@@ -20,38 +21,44 @@ def driver():
     llTest.append(n4)
     llTest.append(n5)
     print(llTest)
-    llTest.appbeg(n1)
+    llTest.appbeg(n6)
     print(llTest)
     llTest.rmvbeg()
     print("removed from beginning: ", "List: ", llTest)
-    llTest.append(n1)
+    n6.next = None
+    llTest.append(n6)
     print(llTest)
     llTest.rmvend()
     print("removed from end: ", "List: ", llTest)
 
     print("\n\nStack:")
-    stTest = Stack()
-    stTest.push(n1)
-    print(stTest)
-    stTest.push(n2)
-    stTest.push(n3)
-    stTest.push(n4)
-    stTest.push(n5)
-    print(stTest)
-    stTest.pop()
-    print("pop: ", stTest)
+    stllTest = StackLL()
+    stllTest.push(n1)
+    print(stllTest)
+    stllTest.push(n2)
+    stllTest.push(n3)
+    stllTest.push(n4)
+    stllTest.push(n5)
+    print(stllTest)
+    stllTest.pop()
+    print("pop: ", stllTest)
 
     print("\n\nQueue:")
-    queTest = Queue()
-    queTest.add(n1)
-    print(queTest)
-    queTest.add(n2)
-    queTest.add(n3)
-    queTest.add(n4)
-    queTest.add(n5)
-    print(queTest)
-    queTest.dequeue()
-    print("remove: ", queTest)
+    n1.next = None
+    n2.next = None
+    n3.next = None
+    n4.next = None
+    n5.next = None
+    quellTest = QueueLL()
+    quellTest.add(n1)
+    print(quellTest)
+    quellTest.add(n2)
+    quellTest.add(n3)
+    quellTest.add(n4)
+    quellTest.add(n5)
+    print(quellTest)
+    quellTest.dequeue()
+    print("remove: ", quellTest)
 
     print("\n\nArray:")
     arr = []
@@ -66,6 +73,31 @@ def driver():
     print("last: ", arr[4])
     print("size", len(arr))
 
+    print("\n\n Array Stack")
+    arrStackTest = StackA()
+    arrStackTest.push("Dakota")
+    print(arrStackTest)
+    arrStackTest.push("Sarah")
+    arrStackTest.push("Zach")
+    arrStackTest.push("Ethan")
+    arrStackTest.push("Levi")
+    arrStackTest.push("Archer")
+    print(arrStackTest)
+    temp = arrStackTest.pop()
+    print("pop ", temp, arrStackTest)
+
+    print("\n\n Array Queue")
+    arrQueueTest = QueueA()
+    arrQueueTest.add("Dakota")
+    print(arrQueueTest)
+    arrQueueTest.add("Sarah")
+    arrQueueTest.add("Zach")
+    arrQueueTest.add("Ethan")
+    arrQueueTest.add("Levi")
+    arrQueueTest.add("Archer")
+    print(arrQueueTest)
+    temp = arrQueueTest.dequeue()
+    print("Dequeue ", temp, arrQueueTest)
 
     return None
 
@@ -147,8 +179,8 @@ class LinkedList:
 
         return rtstr
 
-# Create the Stack class
-class Stack():
+# Create the Linked List implimentation of a Stack class
+class StackLL():
     # Initialize the stack
     def __init__(self):
         self.stck = LinkedList() # Build from the linked list
@@ -165,8 +197,22 @@ class Stack():
     def __repr__(self):
         return str(self.stck) # since the structure is a linked list, use the linked list __repr__() function
 
-# Create the Queue class
-class Queue():
+# Create an Array implementation of a Stack
+class StackA():
+    def __init__(self):
+        self.stck = []
+
+    def push(self, data):
+        self.stck.append(data)
+
+    def pop(self):
+        return self.stck.pop()
+
+    def __repr__(self):
+        return str(self.stck)
+
+# Create the Linked List represenation of a Queue class
+class QueueLL():
     # Initialize the queue
     def __init__(self):
         self.que = LinkedList() # Build from the linked list
@@ -182,6 +228,20 @@ class Queue():
     # display the structure as a string
     def __repr__(self):
         return str(self.que) # since the structure is a linked list, use the linked list __repr__() function
+
+#Create an Array implementation of a Queue
+class QueueA():
+    def __init__(self):
+        self.que = []
+
+    def add(self, data):
+        self.que.append(data)
+
+    def dequeue(self):
+        return self.que.pop(0)
+
+    def __repr__(self):
+        return str(self.que)
 
 # Run the driver code
 driver()
