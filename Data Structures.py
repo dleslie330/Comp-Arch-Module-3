@@ -1,7 +1,5 @@
 # Implementation of data structures in Python
 
-from tkinter import W
-
 # The main driver code of the project
 def driver():
 
